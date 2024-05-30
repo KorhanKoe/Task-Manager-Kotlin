@@ -1,13 +1,25 @@
-open class WorkUnit(
+//Oberklasse WorkUnit
+sealed class WorkUnit(
     val title: String,
     val description: String,
     var deadline: Int,
     var status : Status
 ) : Prioritizable
 {
+    //Definiert eine Variable Priority, die null sein kann
     var priority : Priority ? = null
-    get () = Priority . fromFactor ( this . prioritize ())
 
+
+        // Getter für die priority-Eigenschaft, der die Priorität basierend auf der aktuellen Instanz berechnet
+    get()
+    {
+        // Ruft die prioritize-Methode der aktuellen Instanz auf, um den Prioritätsfaktor zu erhalten
+        val factor = this.prioritize()
+        // Ruft die fromFactor-Methode der Klasse Priority auf, um eine Priority-Instanz basierend auf dem Faktor zu erstellen
+        return Priority.fromFactor(factor)
+    }
+
+    //Methode, die den Durchschnittwert für die Priorität berechnet
     override fun prioritize(): Double {
        val deadlineFactor = calculateDeadlineFactor()
         val statusFactor = calculateStatusFactor()
@@ -15,6 +27,7 @@ open class WorkUnit(
         return faktor
     }
 
+    //Methode für den Deadline-Faktor der Priorität
    fun calculateDeadlineFactor(): Double {
         val daysUntilDeadline = deadline
         return when {
@@ -23,22 +36,8 @@ open class WorkUnit(
             else -> 3.0
         }
     }
- /*   fun deadlineFactor(): Priority {
-        return when {
-            deadline <= 7 -> {
-                println("Die Priorität ist bei $deadline Tagen HIGH")
-                Priority.HIGH
-            }
-            deadline <= 30 -> {
-                println("Die Priorität ist bei $deadline Tagen MEDIUM")
-                Priority.MEDIUM
-            }
-            else -> {
-                println("Die Priorität ist bei $deadline Tagen LOW")
-                Priority.LOW
-            }
-        }*/
 
+    //Methode für den Status-Faktor der Priorität
     fun calculateStatusFactor(): Double {
         return when (status) {
             Status.DOING -> 1.0

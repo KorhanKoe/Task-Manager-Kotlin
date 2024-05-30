@@ -1,44 +1,44 @@
 import java.time.temporal.IsoFields
-
+//Unterklasse Project, erbt von der Klasse WorkUnit
 class Project(
     title: String,
     description: String,
     deadline: Int,
     status: Status,
-    //Mutable-List erlaubt das hinzufügen von neuen Elementen im Gegensatz zu einer normale Liste
     var tasks: MutableList<Task>,
 ) : WorkUnit (title, description, deadline,status)
 {
-    //Fortschritt der Bearbeitung eines Tasks soll in Prozent angegeben werden
+    //Get-Methode für die Ausgabe des aktuellen Standes der Bearbeitung
     val progress: Double
         get() {
-            //zählt, wie viele der betroffenen Aufgaben abgeschlossen sind
-            val completedTasks = tasks.count { it.status == Status.DONE }
-            //size wir verwendet, um die Anzahl aller Elemente zu erhalten.
-            val totalTasks = tasks.size
-            return if (totalTasks > 0) {
-                //berechnet den Prozentsatz
+            val completedTasks = tasks.count { it.status == Status.DONE }       //Zählt, wie viele der betroffenen Aufgaben abgeschlossen sind
+            val totalTasks = tasks.size     //Verwendet die Größe der Liste, um die Anzahl aller Aufgaben zu erhalten
+            return if (totalTasks > 0) {        //Wenn Aufgaben existieren, wird der Prozentsatz berechnet
                 (completedTasks.toDouble() / totalTasks.toDouble()) * 100
             } else {
-                0.0
+                0.0     //Wenn keine Aufgaben existieren ist der Wert 0.0
             }
         }
-
+    //Funktion, die den Status ändern soll. Der Zugriff soll nur befugten im selben Modul ermöglicht werden
     internal fun changeStatus(newStatus: Status) {
         status = newStatus
     }
 
+    //Aufruf der Funktion getSummary aus der WorkUnit-Klasse
     var suma = super.getSummary()
 
+    //Das hinzufügen einer Aufgabe soll genau so wie changeStatus nur befugten im selben Modul gestattet werden
     internal fun addTask (task:Task) {
         tasks.add(task)
     }
 
+    //Methode für die Überprüfung von Deadlines einzelner Aufgaben
     fun checkTasks(today: Int) {
         // Iteriere über die Liste der Aufgaben
         for (task in tasks){
             // Überprüfe den Typ der Aufgabe
            when (task) {
+               //Falls die Aufgabe Teil der Klasse SingleTask ist
                is SingleTask->{
                    // Überprüfe, ob die Erinnerung heute ist
                    if (task.reminder == today) {
@@ -46,8 +46,9 @@ class Project(
                        println("Alarm: Die Deadline für die Aufgabe '${task.title}' steht heute an!")
                    }
                }
+               //Falls die Aufgabe Teil der Klasse RecurringTask ist
                is RecurringTask->{
-                   // Überprüfe, ob die Deadline in der Vergangenheit liegt
+                   // Überprüfe, ob die Deadline der Aufgabe in der Vergangenheit liegt
                    // und ob die neue Deadline noch vor der Projektdeadline liegt
                     if (task.deadline < today && (today + task.frequency) <= deadline) {
                         // Setze die neue Deadline
@@ -57,24 +58,4 @@ class Project(
            }
         }
     }
-
-    //Soll eine Zusammenfassung der wichtigsten Informationen eines Projekts erstellen
-/*    fun getSummary(): String {
-        val taskSummary = tasks.joinToString("\n") { it.getSummary() }
-        return """"
-               Projekt: $title
-               Beschreibung: $description
-               Deadline: $deadline
-               Status: $status
-
-                Das Projekt ’ Wocheneinkauf ’ mit der Beschreibung ’Essen für die
-                kommende Woche besorgen ’ muss bis in 10 Tagen erledigt sein . Der
-                aktuelle Status ist DOING . Das Projekt beinhaltet 3 Aufgaben .
-                Aktuell sind 33 ,33% abgeschlossen .
-               $taskSummary
-            """.trimIndent()
-    }*/
-
-
-
 }

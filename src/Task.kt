@@ -1,4 +1,5 @@
-sealed class Task(
+//Klasse Task, erbt von der Klasse WorkUnit
+sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse Task erstellt werden können
     title: String,
     description: String,
     deadline: Int,
@@ -7,45 +8,32 @@ sealed class Task(
     var estimatedTime : Int?=null
    ) :WorkUnit(title, description,deadline, status)
 {
+
+       //Der Init-Block dient als Sicherheitsvorkehrung für die nullable Eigenschaften
     init {
-        // Wenn nullableProperty null ist, setze sie auf einen Standardwert
-        when {
+        when {              // Wenn eine nullable Eigenschaft null ist, setze sie auf den Standardwert
             steps == null -> steps = 0
             estimatedTime == null -> estimatedTime = 0
         }
     }
-
-        internal fun changeStatus(newstatus: Status) {
+    //Funktion, die den Status ändern soll. Der Zugriff soll nur befugten im selben Modul ermöglicht werden
+    internal fun changeStatus(newstatus: Status) {
         status = newstatus
     }
-
+    // Überschreibt die Priorisierungsfunktion der Basisklasse und gibt die Priorität des Elements zurück
     override fun prioritize(): Double {
-
-        return super.prioritize()
+        return super.prioritize() //Ruft die Priorisierungsfunktion der Basisklasse auf und gibt deren Ergebnis zurück
     }
 
+    //Es soll die Priorität gemessen an der Anzahl der verbleibenden Schritte ausgegeben werden
     fun calculateSteps(): Double {
         return when {
-            steps?.let { it <= 7 } == true -> 1.0
-            steps?.let { it <= 30 } == true -> 2.0
-            else -> 3.0
+            steps?.let { it <= 7 } == true -> 1.0       //Falls steps nicht null ist, und kleiner gleich 7, ist die Priorität hoch
+            steps?.let { it <= 30 } == true -> 2.0      //Falls steps nicht null ist, und kleiner gleich 30, ist die Priorität mittelmäßig
+            else -> 3.0     //Ansonsten ist die Priorität gering
         }
     }
 
+    //Die Methode der Oberklasse wird aufgerufen, um eine Zusammenfassung der allgemeinen Informationen zu erhalten
     var suma = super.getSummary()
-
- /*   fun getSummary() :String {
-        return """"
-               Projekt: $title
-               Beschreibung: $description
-               Deadline: $deadline
-               Status: $status
-               
-                Die Aufgabe ’Einkaufen ’ mit der Beschreibung ’Alle ben ö tigten
-                Lebensmittel kaufen ’ muss bis in 7 Tagen erledigt sein . Der
-                aktuelle Status ist TODO . Die Arbeitsschritte sind : Pfand
-                einpacken , Zum Supermarkt fahren , Einkaufen , Nach Hause fahren ,
-                Eink äufe einräumen . Es wird voraussichtlich 90 Minuten dauern .
-            """.trimIndent()
-    }*/
 }

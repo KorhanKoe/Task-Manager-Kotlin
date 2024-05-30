@@ -1,5 +1,6 @@
+//Enum-Klasse Status, definiert mögliche Zustände
 enum class Status {
-    TODO,
-    DOING,
-    DONE
+    TODO,   //Aufgabe noch nicht begonnen
+    DOING,  //Aufgabe in Bearbeitung
+    DONE    //Aufgabe erledigt
 }
