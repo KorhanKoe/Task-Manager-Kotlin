@@ -9,7 +9,6 @@ class Project(
     var tasks: MutableList<Task>,
 ) : WorkUnit (title, description, deadline,status)
 {
-
     //Fortschritt der Bearbeitung eines Tasks soll in Prozent angegeben werden
     val progress: Double
         get() {

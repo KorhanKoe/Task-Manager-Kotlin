@@ -10,7 +10,7 @@ class SingleTask(    title: String,
 
     fun checkReminder() {
         if (deadline > 2) {
-            println("Reminder: $deadline days left until deadline")
+            println("Reminder: $deadline Tage bis zur Deadline!")
         }else if (deadline <= 2) {
                 throw reminderException("Die Deadline steht kurz bevor! Es sind noch $deadline bis zu der Deadline.")
             }
