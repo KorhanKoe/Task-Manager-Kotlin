@@ -24,7 +24,7 @@ class Project(
         status = newStatus
     }
 
-    //Aufruf der Funktion getSummary aus der WorkUnit-Klasse
+    //Aufruf der Funktion getSummary aus der WorkUnit-Klasse, für einen String mit den wichtigsten Informationen, kein println
     var suma = super.getSummary()
 
     //Das hinzufügen einer Aufgabe soll genau so wie changeStatus nur befugten im selben Modul gestattet werden

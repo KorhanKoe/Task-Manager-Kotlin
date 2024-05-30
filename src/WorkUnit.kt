@@ -45,6 +45,7 @@ sealed class WorkUnit(
             Status.DONE -> 3.0
         }
     }
+    //Gibt einen String mit den wichtigsten Informationen zurück
     //Diese Methode ist hilfreich zum logging von Informationen oder für eine strukturierte Anzeige in einem
     //GUI-Element oder einem Bericht
     open fun getSummary(): String {
