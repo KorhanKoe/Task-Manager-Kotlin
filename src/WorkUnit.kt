@@ -18,14 +18,6 @@ sealed class WorkUnit(
         return Priority.fromFactor(factor)
     }
 
-    //Methode, die den Durchschnittwert für die Priorität berechnet
-    override fun prioritize(): Double {
-       val deadlineFactor = calculateDeadlineFactor()
-        val statusFactor = calculateStatusFactor()
-        var faktor = (deadlineFactor + statusFactor) / 2.0
-        return faktor
-    }
-
     //Methode für den Deadline-Faktor der Priorität
    fun calculateDeadlineFactor(): Double {
         val daysUntilDeadline = deadline
@@ -44,6 +36,15 @@ sealed class WorkUnit(
             Status.DONE -> 3.0
         }
     }
+
+    //Methode, die den Durchschnittwert für die Priorität berechnet
+    override fun prioritize(): Double {
+        val deadlineFactor = calculateDeadlineFactor()
+        val statusFactor = calculateStatusFactor()
+        var factor = (deadlineFactor + statusFactor) / 2.0
+        return factor
+    }
+
     //Gibt einen String mit den wichtigsten Informationen zurück
     //Diese Methode ist hilfreich zum logging von Informationen oder für eine strukturierte Anzeige in einem
     //GUI-Element oder einem Bericht
