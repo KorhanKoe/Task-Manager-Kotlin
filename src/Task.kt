@@ -20,10 +20,6 @@ sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse 
     internal fun changeStatus(newstatus: Status) {
         status = newstatus
     }
-    // Überschreibt die Priorisierungsfunktion der Basisklasse und gibt die Priorität des Elements zurück
-    override fun prioritize(): Double {
-        return super.prioritize() //Ruft die Priorisierungsfunktion der Basisklasse auf und gibt deren Ergebnis zurück
-    }
 
     //Es soll die Priorität gemessen an der Anzahl der verbleibenden Schritte ausgegeben werden
     fun calculateSteps(): Double {

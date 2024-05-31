@@ -30,7 +30,7 @@ class Manager ( val projects : MutableList < Project >)
     //Berechnet die durchschnittliche Dauer für ein Projekt mit priorisierten Aufgaben
     fun avgTime(): Double {
         val highPriorityTasks = getPriorityTodo()       //Ruft die vorher definierte Methode auf, um eine Liste mir priorisierten Aufgaben zu erhalten
-        if (highPriorityTasks.isEmpty()) {      //Prüft, ob diese Liste leer ist, falls ja gibt die Metho 0.0 zurück
+        if (highPriorityTasks.isEmpty()) {      //Prüft, ob diese Liste leer ist, falls ja wird 0.0 zurückgegeben
             return 0.0
         }
         val totalTime = highPriorityTasks.sumOf { it.estimatedTime?.toDouble() ?: 0.0 }    //Falls die Eigenschaft estimatedTime nicht null ist, wird sie summiert

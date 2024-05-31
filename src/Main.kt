@@ -1,9 +1,9 @@
 // Erstellung von Aufgaben (Tasks) und Projekten in der Hauptmethode
 fun main() {
     // Erstellen von Aufgaben
-    val task1 = SingleTask("Task 1", "Beschreibung Task 1", 3, Status.TODO, 2)
+    val task1 = SingleTask("Task 1", "Beschreibung Task 1", 1, Status.TODO, 2)
     val task2 = SingleTask("Task 2", "Beschreibung Task 2", 8, Status.DOING)
-    val task3 = RecurringTask("Task 3", "Beschreibung Task 3", 7, Status.TODO, 3)
+    val task3 = RecurringTask("Task 3", "Beschreibung Task 3", 7, Status.DONE, 3)
     val task4 = RecurringTask("Task 4", "Beschreibung Task 4", 6, Status.DONE, 2)
     val task5 = SingleTask("Task 5", "Beschreibung Task 5", 31, Status.DOING, 9, 2)
     val task6 = SingleTask("Task 6", "Beschreibung Task 6", 3, Status.DONE)
@@ -15,11 +15,11 @@ fun main() {
     val project2 = Project("Projekt 2", "Beschreibung Projekt 2", 12, Status.DOING, mutableListOf(task3, task4))
     val project3 = Project("Projekt 3", "Beschreibung Projekt 3", 15, Status.DONE, mutableListOf(task5, task6, task7))
 
-/*    // Ausgabe von Informationen zu den Aufgaben
+    // Ausgabe von Informationen zu den Aufgaben
     println("Aufgabe 1 Deadline-Faktor: ${task1.calculateDeadlineFactor()}")
     println("Aufgabe 3 Deadline-Faktor: ${task3.calculateDeadlineFactor()}")
 
-    // Ausgabe von Prioritäten
+    // Ausgabe von Prioritäten mittels der Eigenschaft
     println("-------------------------------------------------------------------")
     println("Priorität der Aufgabe 2: ${task2.priority}")
     println("Priorität der Aufgabe 5: ${task5.priority}")
@@ -54,7 +54,6 @@ fun main() {
     val projectAll = Project("Projekt 4", "Beschreibung Projekt 4", 21, Status.TODO, taskManager)
     println("Der Fortschritt des Projekts ist: ${projectAll.progress}%")
     println("Ausgabe des Prozess-Fortschritts der Aufgabe:")
-    task1.checkReminder()
 
     // Weitere Berechnungen und Ausgaben zu einzelnen Aufgaben
     println("-------------------------------------------------------------------")
@@ -69,14 +68,15 @@ fun main() {
 
     // Überprüfung der Erinnerung bis zur Deadline und Ausgabe
     println("-------------------------------------------------------------------")
-    println("Prüfung bis zu der Deadline der single-Task Aufgabe 5 ${task5.checkReminder()}")
+    println("Prüfung bis zu der Deadline der single-Task Aufgabe 2 ${task2.checkReminder()}")
     println("Prüfung bis zu der Deadline der single-Task Aufgabe 8 ${task8.checkReminder()}")
 
-    // Priorisierung von Aufgaben 1, 2 und 3
+    // Priorisierung von Aufgaben 1, 2 und 3 mithilfe der Methode prioritize() aus Task
     println("-------------------------------------------------------------------")
-    task1.prioritize()
-    task2.prioritize()
-    task3.prioritize()*/
+    println("Ausgabe der Prioritätswerte für die Aufgaben:")
+    println("Priorität Aufgabe 1: ${task1.prioritize()}")
+    println("Priorität Aufgabe 2: ${task2.prioritize()}")
+    println("Priorität Aufgabe 3: ${task3.prioritize()}")
 
 // Erstellung einer Liste von Projekten
     val projekte = mutableListOf(project1, project2, project3)
@@ -84,6 +84,7 @@ fun main() {
 // Erstellung eines Managers mit den Projekten
     val manager1 = Manager(projekte)
 
+    println("-------------------------------------------------------------------")
 // Ausgabe der zu erledigenden Aufgaben, die nicht abgeschlossen sind
     println("Überprüfe alle Tasks aus den Porjekten auf den Status und füge sie der ToDo-Liste hinzu, wenn sie nicht abgeschlossen sind:")
     manager1.generateToDoList().forEach { println(it.title) }
@@ -95,4 +96,9 @@ fun main() {
 
     //Ausgabe der Berechnung von der durchschnittlichen Dauer von Aufgaben aus einem Projekt mit hoher Priorität
     println("Die Durchschnittszeit für ein Projekt: ${manager1.avgTime()}")
+
+/*
+    Prüft die Deadline und gibt eine Fehlermeldung aus
+    println("${task1.checkReminder()}")
+*/
 }

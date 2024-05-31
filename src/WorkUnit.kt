@@ -6,15 +6,14 @@ sealed class WorkUnit(
     var status : Status
 ) : Prioritizable
 {
-    //Definiert eine Variable Priority, die null sein kann
+    //Definiert eine Variable Priority, null sein kann
     var priority : Priority ? = null
 
-
-        // Getter für die priority-Eigenschaft, der die Priorität basierend auf der aktuellen Instanz berechnet
+        //Erstellt einen Getter
     get()
     {
-        // Ruft die prioritize-Methode der aktuellen Instanz auf, um den Prioritätsfaktor zu erhalten
-        val factor = this.prioritize()
+        // Ruft die prioritize-Methode auf, um den Prioritätsfaktor zu erhalten
+        val factor = prioritize()
         // Ruft die fromFactor-Methode der Klasse Priority auf, um eine Priority-Instanz basierend auf dem Faktor zu erstellen
         return Priority.fromFactor(factor)
     }
