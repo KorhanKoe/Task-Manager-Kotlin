@@ -27,13 +27,13 @@ class Manager ( val projects : MutableList < Project >)
         return highPriority     //Gibt die Liste mit Aufgaben einer hohen Priorität aus
     }
 
-    //funktioniert nicht richtig
-/*    fun avgTime(): Double {
-        val highPriorityTasks = getPriorityTodo()
-        if (highPriorityTasks.isEmpty()) {
+    //Berechnet die durchschnittliche Dauer für ein Projekt mit priorisierten Aufgaben
+    fun avgTime(): Double {
+        val highPriorityTasks = getPriorityTodo()       //Ruft die vorher definierte Methode auf, um eine Liste mir priorisierten Aufgaben zu erhalten
+        if (highPriorityTasks.isEmpty()) {      //Prüft, ob diese Liste leer ist, falls ja gibt die Metho 0.0 zurück
             return 0.0
         }
-        val totalTime = highPriorityTasks.sumOf { it.estimatedTime?.toDouble() ?: 0.0 }
-        return totalTime / highPriorityTasks.size
-        }*/
+        val totalTime = highPriorityTasks.sumOf { it.estimatedTime?.toDouble() ?: 0.0 }    //Falls die Eigenschaft estimatedTime nicht null ist, wird sie summiert
+        return totalTime / highPriorityTasks.size       //Die Summe totalTime wird dann mit der größe der Liste dividert, um die durchschnittliche Dauer zu berechnen
+        }
 }

@@ -8,7 +8,7 @@ class SingleTask(    title: String,
 {
    //Gibt eine Erinnerung aus, wenn die Deadline nurnoch 2 Tage hat
     val reminder: Int
-        get() = (deadline - 2).coerceAtLeast(0)     //Dieser Wert muss mindestens 0 sein
+        get() = (deadline - 2).coerceAtLeast(0)     //Dieser Wert muss mindestens 0 sein, damit nur positive Werte zugelassen werden
 
     //Soll überprüfen, wieviele Tage bis zu der Deadline verbleiben
     fun checkReminder() {

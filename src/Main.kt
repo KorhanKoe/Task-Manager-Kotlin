@@ -15,7 +15,7 @@ fun main() {
     val project2 = Project("Projekt 2", "Beschreibung Projekt 2", 12, Status.DOING, mutableListOf(task3, task4))
     val project3 = Project("Projekt 3", "Beschreibung Projekt 3", 15, Status.DONE, mutableListOf(task5, task6, task7))
 
-    // Ausgabe von Informationen zu den Aufgaben
+/*    // Ausgabe von Informationen zu den Aufgaben
     println("Aufgabe 1 Deadline-Faktor: ${task1.calculateDeadlineFactor()}")
     println("Aufgabe 3 Deadline-Faktor: ${task3.calculateDeadlineFactor()}")
 
@@ -76,7 +76,7 @@ fun main() {
     println("-------------------------------------------------------------------")
     task1.prioritize()
     task2.prioritize()
-    task3.prioritize()
+    task3.prioritize()*/
 
 // Erstellung einer Liste von Projekten
     val projekte = mutableListOf(project1, project2, project3)
@@ -93,7 +93,6 @@ fun main() {
     println("Generiere eine priorisierte ToDo-Liste:")
     manager1.getPriorityTodo().forEach { println(it.title) }
 
-    /*
+    //Ausgabe der Berechnung von der durchschnittlichen Dauer von Aufgaben aus einem Projekt mit hoher Priorität
     println("Die Durchschnittszeit für ein Projekt: ${manager1.avgTime()}")
-*/
 }
