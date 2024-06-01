@@ -24,11 +24,28 @@ sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse 
     //Es soll die Priorität gemessen an der Anzahl der verbleibenden Schritte ausgegeben werden
     fun calculateSteps(): Double {
         return when {
-            steps?.let { it <= 7 } == true -> 1.0       //Falls steps nicht null ist, und kleiner gleich 7, ist die Priorität hoch
-            steps?.let { it <= 30 } == true -> 2.0      //Falls steps nicht null ist, und kleiner gleich 30, ist die Priorität mittelmäßig
+            steps?.let { it in 5..7 } == true -> 1.0       //Falls steps nicht null ist, und kleiner gleich 7, ist die Priorität hoch
+            steps?.let { it > 11 } == true -> 2.0      //Falls steps nicht null ist, und kleiner gleich 30, ist die Priorität mittelmäßig
             else -> 3.0     //Ansonsten ist die Priorität gering
         }
     }
+
+    //Methode weist der Bearbeitungsdauer Faktoren zu
+    fun calculateEstimatedTime(): Double {
+        return when {
+            estimatedTime?.let {it < 60} == true -> 1.0
+            estimatedTime?.let {it in 60..180} == true -> 2.0
+            else -> 3.0
+        }
+    }
+
+    override fun prioritize(): Double {
+        val stepsFactor = calculateSteps()
+        val estimatedTimeFactor = calculateEstimatedTime()
+        val factor = (stepsFactor + estimatedTimeFactor) / 2.0
+        return factor
+    }
+
 
     //Die Methode der Oberklasse wird aufgerufen, um eine Zusammenfassung der allgemeinen Informationen zu erhalten
     var suma = super.getSummary()

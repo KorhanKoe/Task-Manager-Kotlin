@@ -7,9 +7,10 @@ sealed class WorkUnit(
 ) : Prioritizable
 {
     //Definiert eine Variable Priority, null sein kann
-    var priority : Priority ? = null
 
+    var priority : Priority ? = null
         //Erstellt einen Getter
+
     get()
     {
         // Ruft die prioritize-Methode auf, um den Prioritätsfaktor zu erhalten
@@ -41,7 +42,7 @@ sealed class WorkUnit(
     override fun prioritize(): Double {
         val deadlineFactor = calculateDeadlineFactor()
         val statusFactor = calculateStatusFactor()
-        var factor = (deadlineFactor + statusFactor) / 2.0
+        val factor = (deadlineFactor + statusFactor) / 2.0
         return factor
     }
 
@@ -49,7 +50,7 @@ sealed class WorkUnit(
     //Diese Methode ist hilfreich zum logging von Informationen oder für eine strukturierte Anzeige in einem
     //GUI-Element oder einem Bericht
     open fun getSummary(): String {
-        return """"
+        return """
                Projekt: $title
                Beschreibung: $description
                Deadline: $deadline

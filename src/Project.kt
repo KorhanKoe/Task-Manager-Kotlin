@@ -34,28 +34,25 @@ class Project(
 
     //Methode für die Überprüfung von Deadlines einzelner Aufgaben
     fun checkTasks(today: Int) {
-        // Iteriere über die Liste der Aufgaben
-        for (task in tasks){
-            // Überprüfe den Typ der Aufgabe
-           when (task) {
-               //Falls die Aufgabe Teil der Klasse SingleTask ist
-               is SingleTask->{
-                   // Überprüfe, ob die Erinnerung heute ist
-                   if (task.reminder == today) {
-                       // Gib eine Alarmmeldung aus
-                       println("Alarm: Die Deadline für die Aufgabe '${task.title}' steht heute an!")
-                   }
-               }
-               //Falls die Aufgabe Teil der Klasse RecurringTask ist
-               is RecurringTask->{
-                   // Überprüfe, ob die Deadline der Aufgabe in der Vergangenheit liegt
-                   // und ob die neue Deadline noch vor der Projektdeadline liegt
-                   if (task.deadline < today && (today + (task.frequency ?: 0)) <= deadline) {
-                       // Setze die neue Deadline
-                       deadline = today + (task.frequency ?: 0)
-                   }
-               }
-           }
+        for (task in tasks)        //Weist dann den aktuellen Wert der Variablen zu
+            // Überprüfung der aktuellen Aufgabe
+            when (task) {
+                is SingleTask -> {
+                    if (task.deadline == today) {
+                        throw reminderException("Deadline ist heute fällig!")
+                    }
+                }
+                //Überprüfung der Deadline der aktuellen RecurringTask
+                is RecurringTask -> {
+                    if (task.deadline < today) {        //Falls die Task-Deadline kleiner ist als Heute
+                        val newDeadline = today + (task.frequency ?: 0)     //Sollen die Widerholungen der Aufgabe auf heute addiert werden um die neue Deadline zu bestimmen
+                        if (newDeadline <= deadline) {      //Wenn die neue Deadline vor oder gleich der Projektdeadline liegt
+                            task.deadline = newDeadline     //Aktualisiere die Deadline der Aufgabe auf die neue Deadline
+                        } else {
+                            throw reminderException("Neue Deadline liegt nach der Projektdeadline.")
+                        }
+                    }
+                }
+            }
         }
     }
-}
