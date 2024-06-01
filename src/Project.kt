@@ -50,9 +50,9 @@ class Project(
                is RecurringTask->{
                    // Überprüfe, ob die Deadline der Aufgabe in der Vergangenheit liegt
                    // und ob die neue Deadline noch vor der Projektdeadline liegt
-                    if (task.deadline < today && (today + task.frequency) <= deadline) {
-                        // Setze die neue Deadline
-                        deadline = today + task.frequency
+                   if (task.deadline < today && (today + (task.frequency ?: 0)) <= deadline) {
+                       // Setze die neue Deadline
+                       deadline = today + (task.frequency ?: 0)
                    }
                }
            }

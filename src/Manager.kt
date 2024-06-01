@@ -1,7 +1,7 @@
 //Klasse Manager
 class Manager ( val projects : MutableList < Project >)
 {
-    val todo = mutableListOf <Task >()
+    val todo = mutableListOf <Task>()
 
     //Generiere eine To-Do Liste für die Klasse Manager
     fun generateToDoList(): MutableList<Task> {
