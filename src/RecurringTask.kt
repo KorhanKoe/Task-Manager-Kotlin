@@ -9,4 +9,9 @@ class RecurringTask(title: String,
 )   :Task ( title,description, deadline, status, steps, estimatedTime)
 {
 
+    init {
+        when {
+            frequency == null -> frequency == 0
+        }
+    }
 }
