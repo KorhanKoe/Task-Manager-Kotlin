@@ -19,7 +19,7 @@ sealed class WorkUnit(
         return Priority.fromFactor(factor)
     }
 
-    //Methode für den Deadline-Faktor der Priorität
+    //Methode für den Deadline-Faktor der Prioritäten
    fun calculateDeadlineFactor(): Double {
         val daysUntilDeadline = deadline
         return when {

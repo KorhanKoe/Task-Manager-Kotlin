@@ -30,7 +30,7 @@ sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse 
         }
     }
 
-    //Methode weist der Bearbeitungsdauer Faktoren zu
+    //Methode für die Zuweisung von Faktoren
     fun calculateEstimatedTime(): Double {
         return when {
             estimatedTime?.let {it < 60} == true -> 1.0
