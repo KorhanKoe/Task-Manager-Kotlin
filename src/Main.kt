@@ -34,6 +34,13 @@ fun main() {
     println("Berechnen der durchschnittlichen Priorität Aufgabe 5: ${task5.prioritize()}")
     println("Berechnen der durchschnittlichen Priorität Aufgabe 8: ${task8.prioritize()}")
 
+    println("-------------------------------------------------------------------")
+    //Hinzufügen einer neuen Aufgabe für das Projekt 2
+    println("Alle Aufgaben aus Projekt 2: ")
+    project2.print(project2)
+    project2.addTask(task9)
+    println("Nach dem Hinzufügen der Aufgabe 9: ")
+    project2.print(project2)
     // Ausgabe von Status-Faktoren
     println("-------------------------------------------------------------------")
     println("Aufgabe 2 Status-Faktor: ${task2.calculateStatusFactor()}")
@@ -95,13 +102,14 @@ fun main() {
     println("-------------------------------------------------------------------")
 // Ausgabe der zu erledigenden Aufgaben, die nicht abgeschlossen sind
     println("Überprüfe alle Tasks aus den Porjekten auf den Status und füge sie der ToDo-Liste hinzu, wenn sie nicht abgeschlossen sind:")
-    manager1.generateToDoList().forEach { println(it.title) }
+    manager1.generateToDoList().forEach { println("Title: ${it.title}, Priority: ${it.priority}") }
 
     // Ausgabe einer priorisierten To Do-Liste
     println("-------------------------------------------------------------------")
     println("Generiere eine priorisierte ToDo-Liste:")
-    manager1.getPriorityTodo().forEach { println(it.title) }
+    manager1.getPriorityTodo().forEach { println("Title: ${it.title}, Priority: ${it.priority}") }
 
+    println("-------------------------------------------------------------------")
     //Ausgabe der Berechnung von der durchschnittlichen Dauer von Aufgaben aus einem Projekt mit hoher Priorität
     println("Die Durchschnittszeit für ein Projekt: ${manager1.avgTime()} Tage.")
 

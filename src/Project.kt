@@ -33,6 +33,13 @@ class Project(
         tasks.add(task)
     }
 
+    //Methode zum Ausgeben der Elemente aus der Liste Task
+    fun print(project:Project) {
+        for (task in tasks) {
+            println("${task.title}")
+        }
+    }
+
     //Methode für die Überprüfung von Deadlines einzelner Aufgaben
        fun checkTasks(today: Int) {
         for (task in tasks)        //Weist dann den aktuellen Wert der Variablen zu
