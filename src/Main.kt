@@ -109,7 +109,7 @@ fun main() {
 
     println("-------------------------------------------------------------------")
     //Ausgabe der Berechnung von der durchschnittlichen Dauer von Aufgaben aus einem Projekt mit hoher Priorität
-    println("Die Durchschnittszeit für ein Projekt beträgt: ${manager1.avgTime()} Tage.")
+    println("Die Durchschnittszeit für ein Projekt mit hoher Priorität beträgt: ${manager1.avgTime()} Tage.")
 
 /*
     Prüft die Deadline und gibt eine Fehlermeldung aus
