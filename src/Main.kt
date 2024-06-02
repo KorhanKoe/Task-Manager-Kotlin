@@ -53,9 +53,7 @@ fun main() {
     println("Gesamt-Priorität des dritten Projekts: ${project3.prioritize()}")
 
     // Überprüfung von Aufgaben in Projekten
-    println("-------------------------------------------------------------------")
-
-
+    //-------------------------------------------------------------------
     //project1.checkTasks(8)    //Kommentiert wegen ausgeworfener Exception
     project2.checkTasks(10)
     project3.checkTasks(12)

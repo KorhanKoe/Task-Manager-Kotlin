@@ -8,6 +8,7 @@ class Project(
     var tasks: MutableList<Task>,
 ) : WorkUnit (title, description, deadline,status) {
     //Get-Methode für die Ausgabe für den Bearbeitungsstands
+
     val progress: Double
         get() {
             val completedTasks =
