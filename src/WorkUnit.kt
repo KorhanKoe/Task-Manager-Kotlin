@@ -29,6 +29,14 @@ sealed class WorkUnit(
         }
     }
 
+    fun calcDeadline(): Double{
+        return when {
+            deadline  <= 7 -> 1.0
+            deadline  <=31 ->2.0
+            else -> 3.0
+        }
+    }
+
     //Methode für den Status-Faktor der Priorität
     fun calculateStatusFactor(): Double {
         return when (status) {

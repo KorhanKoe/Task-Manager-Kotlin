@@ -24,8 +24,8 @@ sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse 
     //Es soll die Priorität gemessen an der Anzahl der verbleibenden Schritte ausgegeben werden
     fun calculateSteps(): Double {
         return when {
-            steps?.let { it in 5..7 } == true -> 1.0       //Falls steps nicht null ist, und kleiner gleich 7, ist die Priorität hoch
-            steps?.let { it > 11 } == true -> 2.0      //Falls steps nicht null ist, und kleiner gleich 30, ist die Priorität mittelmäßig
+            steps?.let { it > 11} == true -> 1.0       //Aufgaben mit mehr Schritten haben eine höhere Priorität
+            steps?.let { it in 5..7 }  == true -> 2.0     
             else -> 3.0     //Ansonsten ist die Priorität gering
         }
     }

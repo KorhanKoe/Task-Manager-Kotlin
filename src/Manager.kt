@@ -17,10 +17,10 @@ class Manager ( val projects : MutableList < Project >)
     }
 
     //Soll die priorisierten Aufgaben aus der Liste Filtern
-    fun getPriorityTodo(): List<Task> {
-        var highPriority = mutableListOf<Task>()        //Erstellt eine neue Liste mit Aufgaben die eine hohe Priorität haben
+    fun getPriorityTodo(): MutableList<Task> {
+        val highPriority = mutableListOf<Task>()        //Erstellt eine neue Liste mit Aufgaben die eine hohe Priorität haben
         for (task in todo) {        //Durchläuft die Aufgaben aus der Liste mit noch zu erledigenden Aufgaben
-            if (task.priority== Priority.HIGH) {        //Prüft, ob die Priorität hoch ist
+            if (task.priority == Priority.HIGH) {        //Prüft, ob die Priorität hoch ist
                 highPriority.add(task)      //Falls ja, wird die Aufgabe der Liste hinzugefügt
             }
         }
