@@ -15,7 +15,7 @@ class SingleTask(    title: String,
         if (deadline >=2) {     //Ist sie mehr als zwei Tage entfernt, wird eine Erinnerung ausgegeben
             println("Reminder: $deadline Tage bis zur Deadline!")
         }else if (deadline <= 2) {      //Sind es weniger als zwei Tage, wird ein Exception-Error ausgeworfen
-                throw reminderException("Die Deadline steht kurz bevor! Es sind noch $deadline bis zu der Deadline.")
+                throw ReminderException("Die Deadline steht kurz bevor! Es sind noch $deadline bis zu der Deadline.")
             }
         }
     }

@@ -3,8 +3,8 @@ fun main() {
     // Erstellen von Aufgaben
     val task1 = SingleTask("Task 1", "Beschreibung Task 1", 1, Status.TODO, 2)
     val task2 = SingleTask("Task 2", "Beschreibung Task 2", 8, Status.DOING)
-    val task3 = RecurringTask("Task 3", "Beschreibung Task 3", 7, Status.DONE, 3,4,2)
-    val task4 = RecurringTask("Task 4", "Beschreibung Task 4", 6, Status.DONE, 7,9,5)
+    val task3 = RecurringTask("Task 3", "Beschreibung Task 3", 17, Status.DONE, 3,4,2)
+    val task4 = RecurringTask("Task 4", "Beschreibung Task 4", 11, Status.DONE, 7,9,5)
     val task5 = SingleTask("Task 5", "Beschreibung Task 5", 31, Status.DOING, 9, 2)
     val task6 = SingleTask("Task 6", "Beschreibung Task 6", 3, Status.DONE)
     val task7 = SingleTask("Task 7", "Beschreibung Task 7", 4, Status.DOING, 14, 10)
@@ -44,7 +44,9 @@ fun main() {
 
     // Überprüfung von Aufgaben in Projekten
     println("-------------------------------------------------------------------")
-    project1.checkTasks(8)
+
+
+    //project1.checkTasks(8)    //Kommentiert wegen Exception
     project2.checkTasks(10)
     project3.checkTasks(12)
 

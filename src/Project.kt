@@ -40,7 +40,7 @@ class Project(
             when (task) {
                 is SingleTask -> {
                     if (task.deadline == today) {
-                        throw reminderException("Deadline ist heute fällig!")
+                        throw ReminderException("Deadline ist heute fällig!")
                     }
                 }
                 //Überprüfung der Deadline der aktuellen RecurringTask
@@ -50,7 +50,7 @@ class Project(
                         if (newDeadline <= deadline) {      //Wenn die neue Deadline vor oder gleich der Projektdeadline liegt
                             task.deadline = newDeadline     //Aktualisiere die Deadline der Aufgabe auf die neue Deadline
                         } else {
-                            throw reminderException("Neue Deadline liegt nach der Projektdeadline.")
+                            throw ReminderException("Neue Deadline liegt nach der Projektdeadline.")
                         }
                     }
                 }
