@@ -8,7 +8,7 @@ class RecurringTask(title: String,
                     var frequency: Int? =null
 )   :Task ( title,description, deadline, status, steps, estimatedTime)
 {
-
+    //Init-Block für die zusätzliche nullable-Eigenschaft
     init {
         when {
             frequency == null -> frequency == 0

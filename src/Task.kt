@@ -25,7 +25,7 @@ sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse 
     fun calculateSteps(): Double {
         return when {
             steps?.let { it > 11} == true -> 1.0       //Aufgaben mit mehr Schritten haben eine höhere Priorität
-            steps?.let { it in 5..7 }  == true -> 2.0     
+            steps?.let { it in 5..7 }  == true -> 2.0
             else -> 3.0     //Ansonsten ist die Priorität gering
         }
     }
