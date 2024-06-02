@@ -6,7 +6,7 @@ class SingleTask(    title: String,
                         steps : Int?=null,
                         estimatedTime : Int?=null) :Task(title, description, deadline, status, steps, estimatedTime)
 {
-   //Gibt eine Erinnerung aus, wenn die Deadline nurnoch 2 Tage hat
+   //Gibt eine Erinnerung aus, wenn bis zu der Deadline 2 Tage verbleiben
     val reminder: Int
         get() = (deadline - 2).coerceAtLeast(0)     //Dieser Wert muss mindestens 0 sein, damit nur positive Werte zugelassen werden
 
