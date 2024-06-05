@@ -4,14 +4,14 @@ import java.time.LocalDate
 
 fun main() {
     // Erstellen von Aufgaben
-    val task1 = SingleTask("Task 1", "Beschreibung Task 1", LocalDate.of(2024, 6, 1), Status.TODO, 2)
+    val task1 = SingleTask("Task 1", "Beschreibung Task 1", LocalDate.of(2024, 6, 6), Status.TODO, 2)
     val task2 = SingleTask("Task 2", "Beschreibung Task 2", LocalDate.of(2024, 6, 8), Status.DOING)
     val task3 = RecurringTask("Task 3", "Beschreibung Task 3", LocalDate.of(2024, 6, 12), Status.DONE, 6, 2, 1)
     val task4 = RecurringTask("Task 4", "Beschreibung Task 4", LocalDate.of(2024, 6, 11), Status.DOING, 7, 9, 5)
     val task5 = SingleTask("Task 5", "Beschreibung Task 5", LocalDate.of(2024, 7, 1), Status.DOING, 9, 2)
-    val task6 = SingleTask("Task 6", "Beschreibung Task 6", LocalDate.of(2024, 6, 3), Status.DONE, 18, 9)
-    val task7 = SingleTask("Task 7", "Beschreibung Task 7", LocalDate.of(2024, 6, 4), Status.DOING, 14, 10)
-    val task8 = SingleTask("Task 8", "Beschreibung Task 8", LocalDate.of(2024, 7, 2), Status.TODO, 12, 10)
+    val task6 = SingleTask("Task 6", "Beschreibung Task 6", LocalDate.of(2024, 6, 8), Status.DONE, 18, 9)
+    val task7 = SingleTask("Task 7", "Beschreibung Task 7", LocalDate.of(2024, 6, 7), Status.DOING, 14, 10)
+    val task8 = SingleTask("Task 8", "Beschreibung Task 8", LocalDate.of(2024, 7, 12), Status.TODO, 12, 10)
     val task9 = SingleTask("Task 9", "Beschreibung Task 9", LocalDate.of(2024, 6, 5), Status.DOING, 18, 7)
 
     // Erstellen von Projekten
@@ -86,6 +86,9 @@ fun main() {
     println("-------------------------------------------------------------------")
     println("Erinnerung für die Aufgabe 2: In ${task2.reminder} Tagen sind es nurnoch 2 Tage bis zu der Deadline!")
     println("Erinnerung für die Aufgabe 8: In ${task8.reminder} Tagen sind es nurnoch 2 Tage bis zu der Deadline!")
+    task2.checkReminder()
+    task8.checkReminder()
+    //task1.checkReminder() //Wirft Exception aus
     // Priorisierung von Aufgaben 1, 2 und 3 mithilfe der Methode prioritize() aus Task
     println("-------------------------------------------------------------------")
     println("Ausgabe der Prioritätswerte für die Aufgaben:")
