@@ -1,7 +1,9 @@
+import java.time.LocalDate
+
 //Unterklasse RecurringTask, erbt von der Klasse Task
 class RecurringTask(title: String,
                     description: String,
-                    deadline: Int,
+                    deadline: LocalDate,
                     status: Status,
                     steps: Int ?=null,
                     estimatedTime: Int ?=null,

@@ -1,8 +1,9 @@
+import java.time.LocalDate
 //Klasse Task, erbt von der Klasse WorkUnit
 sealed class Task(      //Sealed wird verwendet, damit keine Objekte der Klasse Task erstellt werden können
     title: String,
     description: String,
-    deadline: Int,
+    deadline: LocalDate,
     status: Status,
     var steps : Int?=null,
     var estimatedTime : Int?=null

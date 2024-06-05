@@ -1,8 +1,11 @@
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
+
 //Oberklasse WorkUnit
 sealed class WorkUnit(
     val title: String,
     val description: String,
-    var deadline: Int,
+    var deadline: LocalDate,
     var status : Status
 ) : Prioritizable
 {
@@ -20,19 +23,11 @@ sealed class WorkUnit(
     }
 
     //Methode für den Deadline-Faktor der Prioritäten
-   fun calculateDeadlineFactor(): Double {
-        val daysUntilDeadline = deadline
+   fun calculateDeadlineFactor(today: LocalDate = LocalDate.now()): Double {
+        val daysUntilDeadline = ChronoUnit.DAYS.between(today, deadline)
         return when {
             daysUntilDeadline <= 7 -> 1.0
             daysUntilDeadline <= 30 -> 2.0
-            else -> 3.0
-        }
-    }
-
-    fun calcDeadline(): Double{
-        return when {
-            deadline  <= 7 -> 1.0
-            deadline  <=31 ->2.0
             else -> 3.0
         }
     }

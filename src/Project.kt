@@ -1,9 +1,9 @@
-import java.time.temporal.IsoFields
+import java.time.LocalDate
 //Unterklasse Project, erbt von der Klasse WorkUnit
 class Project(
     title: String,
     description: String,
-    deadline: Int,
+    deadline: LocalDate,
     status: Status,
     var tasks: MutableList<Task>,
 ) : WorkUnit (title, description, deadline,status) {
@@ -42,7 +42,7 @@ class Project(
     }
 
     //Methode für die Überprüfung von Deadlines einzelner Aufgaben
-       fun checkTasks(today: Int) {
+       fun checkTasks(today: LocalDate = LocalDate.now()) {
         for (task in tasks)        //Weist dann den aktuellen Wert der Variablen zu
             // Überprüfung der aktuellen Aufgabe
             when (task) {
@@ -54,7 +54,7 @@ class Project(
                 //Überprüfung der Deadline der aktuellen RecurringTask
                 is RecurringTask -> {
                     if (task.deadline < today) {        //Falls die Task-Deadline kleiner ist als Heute
-                        val newDeadline = today + (task.frequency ?: 0)     //Sollen die Widerholungen der Aufgabe auf heute addiert werden um die neue Deadline zu bestimmen
+                        val newDeadline = task.deadline.plusDays(task.frequency?.toLong() ?: 0L) //Sollen die Widerholungen der Aufgabe auf heute addiert werden um die neue Deadline zu bestimmen
                         if (newDeadline <= deadline) {      //Wenn die neue Deadline vor oder gleich der Projektdeadline liegt
                             task.deadline = newDeadline     //Aktualisiere die Deadline der Aufgabe auf die neue Deadline
                         } else {
@@ -64,5 +64,6 @@ class Project(
                 }
             }
         }
+
 
 }
