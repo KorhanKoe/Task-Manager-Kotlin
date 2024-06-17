@@ -4,20 +4,20 @@ import java.time.LocalDate
 
 fun main() {
     // Erstellen von Aufgaben
-    val task1 = SingleTask("Task 1", "Beschreibung Task 1", LocalDate.of(2024, 6, 6), Status.TODO, 2)
-    val task2 = SingleTask("Task 2", "Beschreibung Task 2", LocalDate.of(2024, 6, 8), Status.DOING)
-    val task3 = RecurringTask("Task 3", "Beschreibung Task 3", LocalDate.of(2024, 6, 12), Status.DONE, 6, 2, 1)
-    val task4 = RecurringTask("Task 4", "Beschreibung Task 4", LocalDate.of(2024, 6, 11), Status.DOING, 7, 9, 5)
-    val task5 = SingleTask("Task 5", "Beschreibung Task 5", LocalDate.of(2024, 7, 1), Status.DOING, 9, 2)
-    val task6 = SingleTask("Task 6", "Beschreibung Task 6", LocalDate.of(2024, 6, 8), Status.DONE, 18, 9)
-    val task7 = SingleTask("Task 7", "Beschreibung Task 7", LocalDate.of(2024, 6, 7), Status.DOING, 14, 10)
-    val task8 = SingleTask("Task 8", "Beschreibung Task 8", LocalDate.of(2024, 7, 12), Status.TODO, 12, 10)
-    val task9 = SingleTask("Task 9", "Beschreibung Task 9", LocalDate.of(2024, 6, 5), Status.DOING, 18, 7)
+    val task1 = SingleTask("Task 1", "Beschreibung Task 1", LocalDate.of(2024, 8, 6), Status.TODO, 2)
+    val task2 = SingleTask("Task 2", "Beschreibung Task 2", LocalDate.of(2024, 7, 8), Status.DOING)
+    val task3 = RecurringTask("Task 3", "Beschreibung Task 3", LocalDate.of(2024, 8, 12), Status.DONE, 6, 2, 1)
+    val task4 = RecurringTask("Task 4", "Beschreibung Task 4", LocalDate.of(2024, 7, 11), Status.DOING, 7, 9, 5)
+    val task5 = SingleTask("Task 5", "Beschreibung Task 5", LocalDate.of(2024, 8, 1), Status.DOING, 9, 2)
+    val task6 = SingleTask("Task 6", "Beschreibung Task 6", LocalDate.of(2024, 7, 8), Status.DONE, 18, 9)
+    val task7 = SingleTask("Task 7", "Beschreibung Task 7", LocalDate.of(2024, 7, 7), Status.DOING, 14, 10)
+    val task8 = SingleTask("Task 8", "Beschreibung Task 8", LocalDate.of(2024, 8, 12), Status.TODO, 12, 10)
+    val task9 = SingleTask("Task 9", "Beschreibung Task 9", LocalDate.of(2024, 7, 5), Status.DOING, 18, 7)
 
     // Erstellen von Projekten
-    val project1 = Project("Projekt 1", "Beschreibung Projekt 1", LocalDate.of(2024, 6, 10), Status.TODO, mutableListOf(task1, task2))
-    val project2 = Project("Projekt 2", "Beschreibung Projekt 2", LocalDate.of(2024, 6, 13), Status.DOING, mutableListOf(task3, task4))
-    val project3 = Project("Projekt 3", "Beschreibung Projekt 3", LocalDate.of(2024, 6, 6), Status.DONE, mutableListOf(task5, task6, task7, task8, task9))
+    val project1 = Project("Projekt 1", "Beschreibung Projekt 1", LocalDate.of(2024, 7, 10), Status.TODO, mutableListOf(task1, task2))
+    val project2 = Project("Projekt 2", "Beschreibung Projekt 2", LocalDate.of(2024, 7, 13), Status.DOING, mutableListOf(task3, task4))
+    val project3 = Project("Projekt 3", "Beschreibung Projekt 3", LocalDate.of(2024, 7, 6), Status.DONE, mutableListOf(task5, task6, task7, task8, task9))
 
     // Ausgabe des Deadline-Faktors
     val deadline1=task1.calculateDeadlineFactor()
